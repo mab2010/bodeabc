@@ -1,0 +1,75 @@
+  <div class="logo centered">
+   <img src="{{ 'logo.png' | theme_image_url }}"  id="logoimg" alt='BODEA' title="BODEA"
+     onclick= '
+      $("#logoimg").css("margin-left", "0px");
+
+      $( ".productdiv" ).fadeOut( "slow", function() {
+      // Animation complete
+      });'
+      />
+    <ul class="homemenu">
+      <li class="opened"><a href="#" onclick='
+      $("#logoimg").css("margin-left", "280px");
+
+      $( ".productdiv" ).fadeIn( "slow", function() {
+          // Animation complete
+          });
+    $("html").css("background-image", "none");
+'>shop</a></li>
+      <ul class="submenu">
+        <li class="small"><a href="category/hoodies">prints</a></li>
+        <li><a href="category/tees">ceramics</a></li>
+      </ul>
+      <li class="smaller"><a href="">about&<br>contact</a></li>
+    </ul>
+
+  <div class="productdiv" id="product">
+      {% if theme.featured_items > 0 %}
+      {% paginate products from products.all by 10 %}
+      {% if products != blank %}
+      {% for product in products %}
+      <div id="product-{{ product.id }}" class="prod_individual {{ product.category }}">
+      <a href="{{ product.url }}">
+          <img
+                  alt=""
+                  class="blur-up lazyload"
+                  src="{{ product.image | product_image_url | constrain: 400 }}"
+                  data-sizes="auto"
+          >
+          <div class="product_info">
+              <div class="product_name">{{ product.name }}</div>
+              <div class="{% if product.on_sale %}sale{% else %}price{% endif %} {{ product.status }}">
+                  {{ product.default_price | money: theme.money_format }}
+                  {% case product.status %}
+                  {% when 'sold-out' %} / Sold Out
+                  {% when 'coming-soon' %} / Coming Soon
+                  {% when 'active' %} {% if product.on_sale %} / On Sale{% endif %}
+                  {% endcase %}
+              </div>
+          </div>
+      </a>
+      </div>
+      {% endfor %}
+
+      <p class="pagination">
+          {% if paginate.previous %}
+          {% if paginate.previous.is_link %}
+          <a href="{{ paginate.previous.url }}" class="previous circle">&larr; Previous</a>
+          {% endif %}
+          {% endif %}
+
+          {% if paginate.next %}
+          {% if paginate.next.is_link %}
+          <a href="{{ paginate.next.url }}" class="next circle">&rarr; Next</a>
+          {% endif %}
+          {% endif %}
+      </p>
+
+
+      {% endif %}
+
+      {% endpaginate %}
+      {% endif %}
+
+
+</div>
