@@ -1,21 +1,8 @@
   <div class="logo centered">
    <img src="{{ 'logo.png' | theme_image_url }}"  id="logoimg" alt='BODEA' title="BODEA"
-     onclick= '
-      $("#logoimg").css("margin-left", "0px");
-
-      $( ".productdiv" ).fadeOut( "slow", function() {
-      // Animation complete
-      });'
-      />
+     onclick= 'closemenu()'/>
     <ul class="homemenu">
-      <li class="opened"><a href="#" onclick='
-      $("#logoimg").css("margin-left", "280px");
-
-      $( ".productdiv" ).fadeIn( "slow", function() {
-          // Animation complete
-          });
-    $("html").css("background-image", "none");
-'>shop</a></li>
+      <li class="opened"><a href="#" onclick='openmenu()'>shop</a></li>
       <ul class="submenu">
         <li class="small"><a href="category/hoodies">prints</a></li>
         <li><a href="category/tees">ceramics</a></li>
@@ -72,4 +59,24 @@
       {% endif %}
 
 
-</div>
+        </div>
+  </div>
+<script type="text/javascript">
+    function openmenu(){
+
+        $("#logoimg").css("margin-left", "280px");
+        $( ".productdiv" ).fadeIn( "slow", function() {
+            // Animation complete
+        });
+        $("html").css("background-image", "none");
+    }
+
+    function closemenu(){
+
+        $("#logoimg").css("margin-left", "0");
+        $( ".productdiv" ).fadeOut( "slow", function() {
+            // Animation complete
+        });
+        $("html").css("background-image", "url('{{ 'bg.jpg' | theme_image_url }}')");
+    }
+</script>
