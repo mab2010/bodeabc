@@ -1,7 +1,7 @@
   <div class="logo centered">
    <img src="{{ 'logo.png' | theme_image_url }}"  id="logoimg" alt='BODEA' title="BODEA"
      onclick= 'closemenu()'/>
-    <ul class="homemenu">
+    <ul class="homemenu" id="homemenu">
       <li class="opened"><a href="#" onclick='openmenu()'>shop</a></li>
       <ul class="submenu">
         <li class="small"><a href="category/hoodies">prints</a></li>
@@ -65,6 +65,7 @@
     function openmenu(){
 
         $("#logoimg").css("margin-left", "280px");
+        $("#logoimg").addClass( "invert_effect" );
         $( ".productdiv" ).fadeIn( "slow", function() {
             // Animation complete
         });
@@ -74,9 +75,31 @@
     function closemenu(){
 
         $("#logoimg").css("margin-left", "0");
+        $("#logoimg").removeClass( "invert_effect" );
+
         $( ".productdiv" ).fadeOut( "slow", function() {
             // Animation complete
         });
         $("html").css("background-image", "url('{{ 'bg.jpg' | theme_image_url }}')");
+
+
+    }
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the header
+    var header = document.getElementById("homemenu");
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop + 5;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
     }
 </script>
