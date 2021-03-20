@@ -11,7 +11,7 @@ todo:
 
 -animate the background fading.
 
-- make the submenu work
+- make the submenu work. DONE
 
 -mobile design (mockups missing) 
 
