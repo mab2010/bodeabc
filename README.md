@@ -11,3 +11,6 @@ todo:
 -make the image logo change from white to black
 -animate the background fading.
 -make the oposite function to go back to title page clicking in the logo
+
+-mobile design (mockups missing) 
+-product / cart / checkout page
