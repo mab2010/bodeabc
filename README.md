@@ -1,5 +1,13 @@
-# Sunscreen
+Install dugway. https://github.com/bigcartel/dugway
 
-**We've made this theme code public so that other [theme developers](https://developers.bigcartel.com/api/themes) can learn from it.** It's designed to work on [Big Cartel](https://www.bigcartel.com/) or locally with [Dugway](https://github.com/bigcartel/dugway). You're welcome to download, fork, read, and run this theme. However, you are not permitted to sell, distribute, or use this theme outside of Big Cartel. Thanks.
+Run " dugway server" on the main folder
 
-*© 2018 Big Cartel, LLC*
+
+files modified are mostly home.html , layout.html and theme.css 
+
+
+todo: 
+-move js to a function.
+-make the image logo change from white to black
+-animate the background fading.
+-make the oposite function to go back to title page clicking in the logo
